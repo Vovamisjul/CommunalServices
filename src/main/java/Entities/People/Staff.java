@@ -1,6 +1,14 @@
 package Entities.People;
 
 public class Staff extends Person {
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     private Position position = Position.WORKER;
 
     public Staff(String name, Gender gender, Position position) {
@@ -11,6 +19,18 @@ public class Staff extends Person {
     @Override
     public String toString() {
         return "Staff " + name + " - " + position + ", " + gender;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+        var staff = (Staff)obj;
+        return staff.name.equals(name) &&
+                staff.gender == gender &&
+                staff.position == position;
     }
 }
 

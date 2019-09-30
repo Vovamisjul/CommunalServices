@@ -43,7 +43,7 @@ public abstract class Person implements Serializable {
         if (obj == null || obj.getClass() != getClass())
             return false;
         var person = (Person)obj;
-        return person.getName().equals(name) && person.getGender() == gender;
+        return person.name.equals(name) && person.gender == gender;
     }
 
     @Override
