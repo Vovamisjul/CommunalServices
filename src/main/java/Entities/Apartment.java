@@ -15,8 +15,9 @@ public class Apartment {
     public Apartment() {
     }
 
-    public Apartment(int number) {
+    public Apartment(int number, List<Resident> residents) {
         this.number = number;
+        this.residents = residents;
     }
 
     public void incPowerCons(float delta) {
@@ -33,6 +34,14 @@ public class Apartment {
 
     public void resetConsumptions() {
         powerConsumption = hotWaterConsumption = coldWaterConsumption = 0;
+    }
+
+    public List<Resident> getResidents() {
+        return residents;
+    }
+
+    public void AddResident(Resident resident) {
+        residents.add(resident);
     }
 
     @Override
