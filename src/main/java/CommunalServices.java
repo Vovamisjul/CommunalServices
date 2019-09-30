@@ -6,6 +6,10 @@ import java.util.List;
 public class CommunalServices {
     private List<House> servicedHouses = new ArrayList<>();
 
+    public List<House> getServicedHouses() {
+        return servicedHouses;
+    }
+
     public CommunalServices() {
     }
 

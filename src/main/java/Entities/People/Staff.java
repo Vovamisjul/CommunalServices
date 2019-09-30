@@ -1,6 +1,8 @@
 package Entities.People;
 
 public class Staff extends Person {
+    private Position position = Position.WORKER;
+
     public Position getPosition() {
         return position;
     }
@@ -8,8 +10,6 @@ public class Staff extends Person {
     public void setPosition(Position position) {
         this.position = position;
     }
-
-    private Position position = Position.WORKER;
 
     public Staff(String name, Gender gender, Position position) {
         super(name, gender);

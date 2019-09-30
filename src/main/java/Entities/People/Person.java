@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public abstract class Person implements Serializable {
     String name;
+    Gender gender;
 
     public Person() {
     }
@@ -23,8 +24,6 @@ public abstract class Person implements Serializable {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-
-    Gender gender;
 
     public Person(String name, Gender gender) {
         this.name = name;
