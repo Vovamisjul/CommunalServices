@@ -1,40 +1,53 @@
 package Entities.People;
 
-public abstract class Person {
-    private String name;
-    private Gender gender;
-}
+import java.io.Serializable;
 
-enum Gender {
-    AGENDER,
-    ANDROGYNE,
-    ANDROGYNOUS,
-    BIGENDER,
-    CIS,
-    CIS_FEMALE,
-    CIS_MALE,
-    CIS_GENDER,
-    FEMALE,
-    FTM,
-    GENDER_FLUID,
-    GENDER_NONCONFORMING,
-    GENDER_QUESTIONING,
-    GENDER_VARIANT,
-    GENDER_QUEER,
-    INTER_SEX,
-    MALE,
-    MTF,
-    NEITHER,
-    NEUTROIS,
-    NON_BINARY,
-    OTHER,
-    PANGENDER,
-    TRANS,
-    TRANS_FEMALE,
-    TRANS_MALE,
-    TRANS_ASTERISK,
-    TRANS_ASTERISK_FEMALE,
-    TRANS_ASTERISK_MALE,
-    TRANS_MASCULINE,
-    TWO_SPIRIT
+public abstract class Person implements Serializable {
+    String name;
+
+    public Person() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    Gender gender;
+
+    public Person(String name, Gender gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person " + name + ", " + gender;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+        var person = (Person)obj;
+        return person.getName().equals(name) && person.getGender() == gender;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
