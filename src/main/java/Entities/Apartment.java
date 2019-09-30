@@ -44,6 +44,12 @@ public class Apartment {
         residents.add(resident);
     }
 
+    public Resident getResident(int i) throws Exception{
+        if (i > residents.size() || i < 0)
+            throw new IllegalArgumentException("Index of resident is out of bounds!");
+        return residents.get(i);
+    }
+
     @Override
     public String toString() {
         return "Apartment " + number;
