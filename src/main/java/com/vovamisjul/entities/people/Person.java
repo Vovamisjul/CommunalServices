@@ -1,4 +1,4 @@
-package Entities.People;
+package com.vovamisjul.entities.people;
 
 import java.io.Serializable;
 

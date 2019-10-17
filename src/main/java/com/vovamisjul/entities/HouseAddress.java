@@ -1,4 +1,4 @@
-package Entities;
+package com.vovamisjul.entities;
 
 public class HouseAddress {
     private String city = "";

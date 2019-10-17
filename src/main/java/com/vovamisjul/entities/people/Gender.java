@@ -1,4 +1,4 @@
-package Entities.People;
+package com.vovamisjul.entities.people;
 
 public enum Gender {
     AGENDER("Agender"),

@@ -1,4 +1,4 @@
-package Entities.People;
+package com.vovamisjul.entities.people;
 
 public class Resident extends Person {
     @Override

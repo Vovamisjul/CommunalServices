@@ -1,4 +1,4 @@
-package Entities;
+package com.vovamisjul.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,8 @@ public class House {
     public House() {
     }
 
-    public House(HouseAddress address, List<Apartment> apartments) {
+    public House(HouseAddress address) {
         this.address = address;
-        this.apartments = apartments;
     }
 
     public int getApartmentsCount() {
@@ -37,9 +36,9 @@ public class House {
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append("Address: ").append(address).append("\n").append("Apartments: ");
-        for (var house: apartments
+        for (var apartment: apartments
         ) {
-            result.append(house).append("\n");
+            result.append(apartment).append("\n");
         }
         return result.substring(0, result.length() - "\n".length());
     }

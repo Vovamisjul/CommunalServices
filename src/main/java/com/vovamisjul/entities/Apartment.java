@@ -1,6 +1,6 @@
-package Entities;
+package com.vovamisjul.entities;
 
-import Entities.People.Resident;
+import com.vovamisjul.entities.people.Resident;
 
 import java.util.ArrayList;
 import java.util.List;

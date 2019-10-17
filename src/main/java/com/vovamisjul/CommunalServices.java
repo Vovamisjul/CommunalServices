@@ -1,4 +1,6 @@
-import Entities.House;
+package com.vovamisjul;
+
+import com.vovamisjul.entities.House;
 
 import java.util.ArrayList;
 import java.util.List;
