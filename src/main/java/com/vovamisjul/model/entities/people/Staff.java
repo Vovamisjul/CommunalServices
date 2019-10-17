@@ -1,4 +1,4 @@
-package com.vovamisjul.entities.people;
+package com.vovamisjul.model.entities.people;
 
 public class Staff extends Person {
     private Position position = Position.WORKER;

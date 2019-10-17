@@ -1,22 +1,31 @@
-package com.vovamisjul;
+package com.vovamisjul.model;
 
-import com.vovamisjul.entities.House;
+import com.vovamisjul.model.entities.House;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommunalServices {
+public class CommunalServices implements Serializable {
     private List<House> servicedHouses = new ArrayList<>();
-
-    public List<House> getServicedHouses() {
-        return servicedHouses;
-    }
 
     public CommunalServices() {
     }
 
     public void addHouse(House house) {
         servicedHouses.add(house);
+    }
+
+    public List<House> getServicedHouses() {
+        return servicedHouses;
+    }
+
+    public House getHouse(int index) {
+        return servicedHouses.get(index);
+    }
+
+    public void deleteHouse(int index) {
+        servicedHouses.remove(index);
     }
 
     @Override
@@ -26,6 +35,8 @@ public class CommunalServices {
              ) {
             result.append(house).append("\n");
         }
+        if (result.length() == 0)
+            return "empty";
         return result.substring(0, result.length() - "\n".length());
     }
 

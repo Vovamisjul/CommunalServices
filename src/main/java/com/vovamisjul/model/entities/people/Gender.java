@@ -1,4 +1,4 @@
-package com.vovamisjul.entities.people;
+package com.vovamisjul.model.entities.people;
 
 public enum Gender {
     AGENDER("Agender"),

@@ -1,39 +1,18 @@
 package com.vovamisjul.controller;
 
-import com.vovamisjul.CommunalServices;
-import com.vovamisjul.entities.House;
-import com.vovamisjul.entities.HouseAddress;
+import com.vovamisjul.model.CommunalServices;
+import com.vovamisjul.model.entities.House;
+import com.vovamisjul.model.entities.HouseAddress;
 
-import java.util.Scanner;
-
-public class CommunalServicesController {
+public class CommunalServicesController extends CRUDController {
     private CommunalServices communalServices = new CommunalServices();
-    private Scanner scanner = new Scanner(System.in);
-
+    final String controllerName = "s";
     public CommunalServicesController() {
 
     }
 
-    public void run() {
-        while (true) {
-            System.out.println("/**********************************************************/");
-            System.out.println("Communal services start page");
-            System.out.println("print: 1 to show all houses; 2 to add new house; 0 to exit");
-            var input = scanner.nextLine();
-            switch (input) {
-                case "1":
-                    System.out.println(communalServices.toString());
-                    break;
-                case "2":
-                    addNewHouse();
-                    break;
-                case "0":
-                    return;
-            }
-        }
-    }
-
-    public void addNewHouse() {
+    @Override
+    public void createEntity() {
         System.out.println("Enter city");
         var city = scanner.nextLine();
         System.out.println("Enter street");
@@ -47,5 +26,41 @@ public class CommunalServicesController {
         catch (NumberFormatException e) {
             System.out.println("Wrong house number");
         }
+    }
+
+    @Override
+    public void readEntity() {
+        System.out.println(communalServices);
+    }
+
+    @Override
+    public void updateEntity() {
+        System.out.println("Enter number");
+        var number = scanner.nextLine();
+        try {
+            var index = Integer.parseInt(number);
+            new HouseController(communalServices.getHouse(index)).run();
+        }
+        catch (Exception e) {
+            System.out.println("Wrong house number");
+        }
+    }
+
+    @Override
+    public void deleteEntity() {
+        System.out.println("Enter number");
+        var number = scanner.nextLine();
+        try {
+            var index = Integer.parseInt(number);
+            communalServices.deleteHouse(index);
+        }
+        catch (Exception e) {
+            System.out.println("Wrong house number");
+        }
+    }
+
+    @Override
+    String getEntityName() {
+        return "house";
     }
 }

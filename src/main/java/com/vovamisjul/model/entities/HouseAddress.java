@@ -1,6 +1,8 @@
-package com.vovamisjul.entities;
+package com.vovamisjul.model.entities;
 
-public class HouseAddress {
+import java.io.Serializable;
+
+public class HouseAddress implements Serializable {
     private String city = "";
     private String street = "";
     private int house = 0;

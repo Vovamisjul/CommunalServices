@@ -1,11 +1,12 @@
-package com.vovamisjul.entities;
+package com.vovamisjul.model.entities;
 
-import com.vovamisjul.entities.people.Resident;
+import com.vovamisjul.model.entities.people.Resident;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Apartment {
+public class Apartment implements Serializable {
     private int number = 0;
     private float powerConsumption = 0;
     private float hotWaterConsumption = 0;
@@ -15,9 +16,8 @@ public class Apartment {
     public Apartment() {
     }
 
-    public Apartment(int number, List<Resident> residents) {
+    public Apartment(int number) {
         this.number = number;
-        this.residents = residents;
     }
 
     public void incPowerCons(float delta) {
@@ -40,7 +40,7 @@ public class Apartment {
         return residents;
     }
 
-    public void AddResident(Resident resident) {
+    public void addResident(Resident resident) {
         residents.add(resident);
     }
 

@@ -1,9 +1,10 @@
-package com.vovamisjul.entities;
+package com.vovamisjul.model.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class House {
+public class House implements Serializable {
     private HouseAddress address = new HouseAddress();
     private List<Apartment> apartments = new ArrayList<>();
 
@@ -26,10 +27,16 @@ public class House {
         return apartments.size();
     }
 
-    public Apartment getApartment(int i) throws Exception{
-        if (i > apartments.size() || i < 0)
-            throw new IllegalArgumentException("Number of apartment is out of bounds!");
-        return apartments.get(i);
+    public Apartment getApartment(int index){
+        return apartments.get(index);
+    }
+
+    public void addApartments(Apartment apartment) {
+        apartments.add(apartment);
+    }
+
+    public void deleteApartments(int index) {
+        apartments.remove(index);
     }
 
     @Override
@@ -40,6 +47,8 @@ public class House {
         ) {
             result.append(apartment).append("\n");
         }
+        if (result.length() == 0)
+            return "empty";
         return result.substring(0, result.length() - "\n".length());
     }
 
