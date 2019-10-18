@@ -58,10 +58,15 @@ public class Apartment implements Serializable {
     @Override
     public String toString() {
         var result = new StringBuilder();
-        result.append("Apartment ").append(number).append("\n");
-        for (var resident: residents
-        ) {
-            result.append(resident).append("\n");
+        result.append("Apartment ").append(number).append("\n").append("residents: ");
+        if (residents.size() == 0) {
+            result.append("empty \n");
+        }
+        else {
+            for (var resident : residents
+            ) {
+                result.append(resident).append("\n");
+            }
         }
         result.append("hot water consumption: ").append(hotWaterConsumption).append("\n");
         result.append("cold water consumption: ").append(coldWaterConsumption).append("\n");

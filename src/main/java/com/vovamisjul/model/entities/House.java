@@ -49,13 +49,15 @@ public class House implements Serializable {
     public String toString() {
         var result = new StringBuilder();
         result.append("Address: ").append(address).append("\n").append("Apartments: ");
+        if (apartments.size() == 0) {
+            result.append("empty");
+            return result.toString();
+        }
         for (var apartment: apartments.values()
         ) {
-            result.append(apartment).append("\n");
+            result.append(apartment.getNumber()).append(", ");
         }
-        if (result.length() == 0)
-            return "empty";
-        return result.substring(0, result.length() - "\n".length());
+        return result.substring(0, result.length() - ", ".length());
     }
 
     @Override

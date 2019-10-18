@@ -21,9 +21,9 @@ public class ApartmentController extends CRUDController {
         while (true) {
             System.out.println("/**********************************************************/");
             System.out.println("Page of " + getEntityName());
-            System.out.println("print: 1 to show all " + getEntityName() + "s; " +
-                    "2 to add new " + getEntityName() + "; 3 to edit " + getEntityName() + "; " +
-                    "4 to remove " + getEntityName() + "; 5 to reset consumptions; 6 to add consumptions; 0 to exit");
+            System.out.println("print: 1 to show " + getEntityName() + "; " +
+                    "2 to add new " + getSubentityName() + "; 3 to edit " + getSubentityName() + "; " +
+                    "4 to remove " + getSubentityName() + "; 5 to reset consumptions; 6 to add consumptions; 0 to exit");
             var input = scanner.nextLine();
             switch (input) {
                 case "1":
@@ -90,7 +90,7 @@ public class ApartmentController extends CRUDController {
         return "apartment";
     }
 
-    void addConsumptions() {
+    private void addConsumptions() {
         System.out.println("print 1 to add hot water consumptions; 2 to add cold water consumptions; 3 to add power consumption");
         try {
             switch (scanner.nextLine()) {
