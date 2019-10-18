@@ -1,18 +1,22 @@
 package com.vovamisjul.model.entities;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class House implements Serializable {
     private HouseAddress address = new HouseAddress();
-    private List<Apartment> apartments = new ArrayList<>();
+    private Map<Integer, Apartment> apartments = new HashMap<>();
 
     public HouseAddress getAddress() {
         return address;
     }
 
-    public List<Apartment> getApartments() {
+    public Map<Integer, Apartment> getApartments() {
         return apartments;
     }
 
@@ -32,7 +36,9 @@ public class House implements Serializable {
     }
 
     public void addApartments(Apartment apartment) {
-        apartments.add(apartment);
+        if (apartments.containsKey(apartment.getNumber()))
+            throw new IllegalArgumentException("Apartment with this key already exists");
+        apartments.put(apartment.getNumber(), apartment);
     }
 
     public void deleteApartments(int index) {
@@ -41,9 +47,9 @@ public class House implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
+        var result = new StringBuilder();
         result.append("Address: ").append(address).append("\n").append("Apartments: ");
-        for (var apartment: apartments
+        for (var apartment: apartments.values()
         ) {
             result.append(apartment).append("\n");
         }
@@ -65,6 +71,6 @@ public class House implements Serializable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return new HashCodeBuilder().append(apartments).append(address).toHashCode();
     }
 }

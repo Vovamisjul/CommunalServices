@@ -28,6 +28,9 @@ public class HouseController extends CRUDController {
         catch (NumberFormatException e) {
             System.out.println("Wrong apartment number");
         }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -62,7 +65,12 @@ public class HouseController extends CRUDController {
     }
 
     @Override
-    String getEntityName() {
+    String getSubentityName() {
         return "apartment";
+    }
+
+    @Override
+    String getEntityName() {
+        return "house";
     }
 }

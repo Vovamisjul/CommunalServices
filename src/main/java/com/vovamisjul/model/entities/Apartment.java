@@ -1,23 +1,30 @@
 package com.vovamisjul.model.entities;
 
 import com.vovamisjul.model.entities.people.Resident;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Apartment implements Serializable {
-    private int number = 0;
+
+    private final int number;
     private double powerConsumption = 0;
     private double hotWaterConsumption = 0;
     private double coldWaterConsumption = 0;
     private List<Resident> residents = new ArrayList<>();
 
     public Apartment() {
+        number = 0;
     }
 
     public Apartment(int number) {
         this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public void incPowerCons(double delta) {
@@ -50,7 +57,16 @@ public class Apartment implements Serializable {
 
     @Override
     public String toString() {
-        return "Apartment " + number;
+        var result = new StringBuilder();
+        result.append("Apartment ").append(number).append("\n");
+        for (var resident: residents
+        ) {
+            result.append(resident).append("\n");
+        }
+        result.append("hot water consumption: ").append(hotWaterConsumption).append("\n");
+        result.append("cold water consumption: ").append(coldWaterConsumption).append("\n");
+        result.append("power consumption: ").append(powerConsumption);
+        return result.toString();
     }
 
     @Override
@@ -69,7 +85,8 @@ public class Apartment implements Serializable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return new HashCodeBuilder().append(number).append(powerConsumption).append(coldWaterConsumption)
+                .append(hotWaterConsumption).append(residents).toHashCode();
     }
 
 }

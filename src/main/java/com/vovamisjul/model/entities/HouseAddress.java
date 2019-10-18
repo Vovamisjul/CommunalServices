@@ -1,13 +1,17 @@
 package com.vovamisjul.model.entities;
 
 import java.io.Serializable;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class HouseAddress implements Serializable {
-    private String city = "";
-    private String street = "";
-    private int house = 0;
+    private final String city;
+    private final String street;
+    private final int house;
 
     public HouseAddress() {
+        city = "";
+        street = "";
+        house = 0;
     }
 
     public HouseAddress(String city, String street, int house) {
@@ -23,7 +27,7 @@ public class HouseAddress implements Serializable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return new HashCodeBuilder().append(city).append(street).append(house).toHashCode();
     }
 
     @Override
@@ -35,6 +39,6 @@ public class HouseAddress implements Serializable {
         var address = (HouseAddress)obj;
         return address.city.equals(city) &&
                 address.street.equals(street) &&
-                address.house== house;
+                address.house == house;
     }
 }

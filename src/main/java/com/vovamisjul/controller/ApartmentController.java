@@ -81,8 +81,13 @@ public class ApartmentController extends CRUDController {
     }
 
     @Override
-    String getEntityName() {
+    String getSubentityName() {
         return "resident";
+    }
+
+    @Override
+    String getEntityName() {
+        return "apartment";
     }
 
     void addConsumptions() {
@@ -91,7 +96,7 @@ public class ApartmentController extends CRUDController {
             switch (scanner.nextLine()) {
                 case "1":
                     System.out.println("print amount");
-                    apartment.incHotWaterCons(Double.parseDouble(scanner.nextLine()));
+                    apartment.incHotWaterCons(scanner.nextDouble());
                     break;
                 case "2":
                     System.out.println("print amount");

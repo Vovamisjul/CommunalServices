@@ -13,9 +13,9 @@ public abstract class CRUDController {
         while (true) {
             System.out.println("/**********************************************************/");
             System.out.println("Page of " + getEntityName());
-            System.out.println("print: 1 to show all " + getEntityName() + "s; " +
-                    "2 to add new " + getEntityName() + "; 3 to edit " + getEntityName() + "; " +
-                    "4 to remove " + getEntityName() + "; 0 to exit");
+            System.out.println("print: 1 to show " + getEntityName() + "; " +
+                    "2 to add new " + getSubentityName() + "; 3 to edit " + getSubentityName() + "; " +
+                    "4 to remove " + getSubentityName() + "; 0 to exit");
             switch (scanner.nextLine()) {
                 case "1":
                     readEntity();
@@ -39,5 +39,6 @@ public abstract class CRUDController {
     public abstract void readEntity();
     public abstract void updateEntity();
     public abstract void deleteEntity();
+    abstract String getSubentityName();
     abstract String getEntityName();
 }

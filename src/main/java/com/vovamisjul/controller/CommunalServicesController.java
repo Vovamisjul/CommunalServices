@@ -26,6 +26,9 @@ public class CommunalServicesController extends CRUDController {
         catch (NumberFormatException e) {
             System.out.println("Wrong house number");
         }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -35,11 +38,18 @@ public class CommunalServicesController extends CRUDController {
 
     @Override
     public void updateEntity() {
-        System.out.println("Enter number");
+        System.out.println("Enter city");
+        var city = scanner.nextLine();
+        System.out.println("Enter street");
+        var street = scanner.nextLine();
+        System.out.println("Enter house number");
         var number = scanner.nextLine();
         try {
-            var index = Integer.parseInt(number);
-            new HouseController(communalServices.getHouse(index)).run();
+            var intNumber = Integer.parseInt(number);
+            new HouseController(communalServices.getHouse(new HouseAddress(city, street, intNumber))).run();
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
         catch (Exception e) {
             System.out.println("Wrong house number");
@@ -48,11 +58,18 @@ public class CommunalServicesController extends CRUDController {
 
     @Override
     public void deleteEntity() {
-        System.out.println("Enter number");
+        System.out.println("Enter city");
+        var city = scanner.nextLine();
+        System.out.println("Enter street");
+        var street = scanner.nextLine();
+        System.out.println("Enter house number");
         var number = scanner.nextLine();
         try {
-            var index = Integer.parseInt(number);
-            communalServices.deleteHouse(index);
+            var intNumber = Integer.parseInt(number);
+            communalServices.deleteHouse(new HouseAddress(city, street, intNumber));
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
         catch (Exception e) {
             System.out.println("Wrong house number");
@@ -60,7 +77,12 @@ public class CommunalServicesController extends CRUDController {
     }
 
     @Override
-    String getEntityName() {
+    String getSubentityName() {
         return "house";
+    }
+
+    @Override
+    String getEntityName() {
+        return "communal service";
     }
 }

@@ -1,48 +1,55 @@
 package com.vovamisjul.model;
 
 import com.vovamisjul.model.entities.House;
+import com.vovamisjul.model.entities.HouseAddress;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CommunalServices implements Serializable {
-    private List<House> servicedHouses = new ArrayList<>();
+    private Map<HouseAddress, House> servicedHouses = new HashMap<>();
 
     public CommunalServices() {
     }
 
     public void addHouse(House house) {
-        servicedHouses.add(house);
+        if (servicedHouses.containsKey(house.getAddress()))
+            throw new IllegalArgumentException("House with this address already exists");
+        servicedHouses.put(house.getAddress(), house);
     }
 
-    public List<House> getServicedHouses() {
+    public Map<HouseAddress, House> getServicedHouses() {
         return servicedHouses;
     }
 
-    public House getHouse(int index) {
-        return servicedHouses.get(index);
+    public House getHouse(HouseAddress address) {
+        if (servicedHouses.containsKey(address))
+            return servicedHouses.get(address);
+        throw new IllegalArgumentException("There are no such house");
     }
 
-    public void deleteHouse(int index) {
-        servicedHouses.remove(index);
+    public void deleteHouse(HouseAddress address) {
+        servicedHouses.remove(address);
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (var house: servicedHouses
+        for (var house: servicedHouses.values()
              ) {
-            result.append(house.getAddress()).append(", ");
+            result.append(house.getAddress()).append("\n");
         }
         if (result.length() == 0)
             return "empty";
-        return result.substring(0, result.length() - ", ".length());
+        return result.substring(0, result.length() - "\n".length());
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return servicedHouses.hashCode();
     }
 
     @Override

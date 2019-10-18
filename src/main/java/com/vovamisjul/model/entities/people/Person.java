@@ -1,5 +1,7 @@
 package com.vovamisjul.model.entities.people;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 
 public abstract class Person implements Serializable {
@@ -47,6 +49,6 @@ public abstract class Person implements Serializable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return new HashCodeBuilder().append(name).append(gender).toHashCode();
     }
 }
