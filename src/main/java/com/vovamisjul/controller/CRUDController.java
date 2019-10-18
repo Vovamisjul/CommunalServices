@@ -10,6 +10,7 @@ public abstract class CRUDController {
     }
 
     public void run() {
+        start();
         while (true) {
             System.out.println("/**********************************************************/");
             System.out.println("Page of " + getEntityName());
@@ -30,6 +31,7 @@ public abstract class CRUDController {
                     deleteEntity();
                     break;
                 case "0":
+                    exit();
                     return;
             }
         }
@@ -41,4 +43,10 @@ public abstract class CRUDController {
     public abstract void deleteEntity();
     abstract String getSubentityName();
     abstract String getEntityName();
+    public void exit() {
+
+    }
+    public void start() {
+
+    }
 }

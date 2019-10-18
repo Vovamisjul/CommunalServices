@@ -1,8 +1,12 @@
 package com.vovamisjul.controller;
 
+import com.google.gson.Gson;
 import com.vovamisjul.model.CommunalServices;
+import com.vovamisjul.model.IOSystem;
 import com.vovamisjul.model.entities.House;
 import com.vovamisjul.model.entities.HouseAddress;
+
+import java.io.IOException;
 
 public class CommunalServicesController extends CRUDController {
     private CommunalServices communalServices = new CommunalServices();
@@ -77,6 +81,15 @@ public class CommunalServicesController extends CRUDController {
     }
 
     @Override
+    public void exit() {
+        try {
+            IOSystem.saveToFile(communalServices);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
     String getSubentityName() {
         return "house";
     }
@@ -84,5 +97,14 @@ public class CommunalServicesController extends CRUDController {
     @Override
     String getEntityName() {
         return "communal service";
+    }
+
+    @Override
+    public void start() {
+        try {
+            communalServices = IOSystem.loadFromFile();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -39,10 +39,6 @@ public enum Gender {
 
     @Override
     public String toString() {
-        return super.toString();
-    }
-
-    public String getName() {
         return name;
     }
 
