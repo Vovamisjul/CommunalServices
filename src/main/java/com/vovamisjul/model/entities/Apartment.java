@@ -10,6 +10,7 @@ import java.util.List;
 public class Apartment implements Serializable {
 
     private final int number;
+
     private double powerConsumption = 0;
     private double hotWaterConsumption = 0;
     private double coldWaterConsumption = 0;
@@ -27,6 +28,18 @@ public class Apartment implements Serializable {
         return number;
     }
 
+    public double getPowerConsumption() {
+        return powerConsumption;
+    }
+
+    public double getHotWaterConsumption() {
+        return hotWaterConsumption;
+    }
+
+    public double getColdWaterConsumption() {
+        return coldWaterConsumption;
+    }
+
     public void incPowerCons(double delta) {
         powerConsumption += delta;
     }
@@ -41,10 +54,6 @@ public class Apartment implements Serializable {
 
     public void resetConsumptions() {
         powerConsumption = hotWaterConsumption = coldWaterConsumption = 0;
-    }
-
-    public List<Resident> getResidents() {
-        return residents;
     }
 
     public void addResident(Resident resident) {

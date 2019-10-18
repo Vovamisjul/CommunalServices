@@ -27,10 +27,6 @@ public class House implements Serializable {
         this.address = address;
     }
 
-    public int getApartmentsCount() {
-        return apartments.size();
-    }
-
     public Apartment getApartment(int index){
         if (apartments.containsKey(index))
             return apartments.get(index);

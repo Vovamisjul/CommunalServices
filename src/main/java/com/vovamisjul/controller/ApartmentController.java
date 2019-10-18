@@ -22,8 +22,8 @@ public class ApartmentController extends CRUDController {
             System.out.println("/**********************************************************/");
             System.out.println("Page of " + getEntityName());
             System.out.println("print: 1 to show " + getEntityName() + "; " +
-                    "2 to add new " + getSubentityName() + "; 3 to edit " + getSubentityName() + "; " +
-                    "4 to remove " + getSubentityName() + "; 5 to reset consumptions; 6 to add consumptions; 0 to exit");
+                    "2 to add new " + getSubentityName() + "; 3 to remove " + getSubentityName() + "; " +
+                    "4 to reset consumptions; 5 to add consumptions; 0 to exit");
             var input = scanner.nextLine();
             switch (input) {
                 case "1":
@@ -33,15 +33,12 @@ public class ApartmentController extends CRUDController {
                     createEntity();
                     break;
                 case "3":
-                    updateEntity();
-                    break;
-                case "4":
                     deleteEntity();
                     break;
-                case "5":
+                case "4":
                     apartment.resetConsumptions();
                     break;
-                case "6":
+                case "5":
                     addConsumptions();
                     break;
                 case "0":

@@ -21,10 +21,6 @@ public class CommunalServices implements Serializable {
         servicedHouses.put(house.getAddress(), house);
     }
 
-    public Map<HouseAddress, House> getServicedHouses() {
-        return servicedHouses;
-    }
-
     public House getHouse(HouseAddress address) {
         if (servicedHouses.containsKey(address))
             return servicedHouses.get(address);
