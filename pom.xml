@@ -8,7 +8,7 @@
     <artifactId>CommunalServices</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
-        <finalName>Communal services</finalName>
+        <finalName>Communal-services</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
