@@ -46,5 +46,14 @@ public enum Gender {
         return name;
     }
 
+    public static Gender fromString(String gender) {
+        for (Gender g : Gender.values()) {
+            if (g.name.equalsIgnoreCase(gender)) {
+                return g;
+            }
+        }
+        throw new IllegalArgumentException("There are no such gender");
+    }
+
     private String name;
 }

@@ -37,7 +37,15 @@ public class HouseController extends CRUDController {
 
     @Override
     public void updateEntity() {
-
+        System.out.println("Enter number");
+        var number = scanner.nextLine();
+        try {
+            var index = Integer.parseInt(number);
+            new ApartmentController(house.getApartment(index)).run();
+        }
+        catch (Exception e) {
+            System.out.println("Wrong apartment number");
+        }
     }
 
     @Override

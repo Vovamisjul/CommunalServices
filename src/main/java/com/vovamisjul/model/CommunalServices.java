@@ -33,11 +33,11 @@ public class CommunalServices implements Serializable {
         StringBuilder result = new StringBuilder();
         for (var house: servicedHouses
              ) {
-            result.append(house).append("\n");
+            result.append(house.getAddress()).append(", ");
         }
         if (result.length() == 0)
             return "empty";
-        return result.substring(0, result.length() - "\n".length());
+        return result.substring(0, result.length() - ", ".length());
     }
 
     @Override

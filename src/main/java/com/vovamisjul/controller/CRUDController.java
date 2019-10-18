@@ -16,8 +16,7 @@ public abstract class CRUDController {
             System.out.println("print: 1 to show all " + getEntityName() + "s; " +
                     "2 to add new " + getEntityName() + "; 3 to edit " + getEntityName() + "; " +
                     "4 to remove " + getEntityName() + "; 0 to exit");
-            var input = scanner.nextLine();
-            switch (input) {
+            switch (scanner.nextLine()) {
                 case "1":
                     readEntity();
                     break;

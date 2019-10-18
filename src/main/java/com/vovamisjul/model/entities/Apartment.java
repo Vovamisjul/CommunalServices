@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Apartment implements Serializable {
     private int number = 0;
-    private float powerConsumption = 0;
-    private float hotWaterConsumption = 0;
-    private float coldWaterConsumption = 0;
+    private double powerConsumption = 0;
+    private double hotWaterConsumption = 0;
+    private double coldWaterConsumption = 0;
     private List<Resident> residents = new ArrayList<>();
 
     public Apartment() {
@@ -20,15 +20,15 @@ public class Apartment implements Serializable {
         this.number = number;
     }
 
-    public void incPowerCons(float delta) {
+    public void incPowerCons(double delta) {
         powerConsumption += delta;
     }
 
-    public void incHotWaterCons(float delta) {
+    public void incHotWaterCons(double delta) {
         hotWaterConsumption += delta;
     }
 
-    public void incColdWaterCons(float delta) {
+    public void incColdWaterCons(double delta) {
         coldWaterConsumption += delta;
     }
 
@@ -44,10 +44,8 @@ public class Apartment implements Serializable {
         residents.add(resident);
     }
 
-    public Resident getResident(int i) throws Exception{
-        if (i > residents.size() || i < 0)
-            throw new IllegalArgumentException("Index of resident is out of bounds!");
-        return residents.get(i);
+    public Resident getResident(int index){
+        return residents.get(index);
     }
 
     @Override
