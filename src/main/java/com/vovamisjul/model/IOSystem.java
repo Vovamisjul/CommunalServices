@@ -1,6 +1,7 @@
 package com.vovamisjul.model;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileNotFoundException;
@@ -15,15 +16,15 @@ public class IOSystem {
         {
             int c;
             while((c=reader.read())!=-1){
-                json.append(c);
+                json.append((char)c);
             }
         }
         return new Gson().fromJson(json.toString(), CommunalServices.class);
     }
     public static void saveToFile(CommunalServices communalServices) throws IOException {
-        try(FileWriter writer = new FileWriter("notes3.txt", false))
+        try(FileWriter writer = new FileWriter("file.txt", false))
         {
-            writer.write(new Gson().toJson(communalServices));
+            writer.write(new GsonBuilder().enableComplexMapKeySerialization().create().toJson(communalServices));
             writer.flush();
         }
     }

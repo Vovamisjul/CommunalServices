@@ -32,7 +32,9 @@ public class House implements Serializable {
     }
 
     public Apartment getApartment(int index){
-        return apartments.get(index);
+        if (apartments.containsKey(index))
+            return apartments.get(index);
+        throw new IllegalArgumentException();
     }
 
     public void addApartments(Apartment apartment) {
