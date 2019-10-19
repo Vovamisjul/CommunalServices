@@ -16,7 +16,8 @@ public abstract class CRUDController {
             System.out.println("Page of " + getEntityName());
             System.out.println("print: 1 to show " + getEntityName() + "; " +
                     "2 to add new " + getSubentityName() + "; 3 to edit " + getSubentityName() + "; " +
-                    "4 to remove " + getSubentityName() + "; 0 to exit");
+                    "4 to remove " + getSubentityName() + "; 5 to sort " + getSubentityName() + "; " +
+                    "6 to search " + getSubentityName() + "; 0 to exit");
             switch (scanner.nextLine()) {
                 case "1":
                     readEntity();
@@ -30,6 +31,12 @@ public abstract class CRUDController {
                 case "4":
                     deleteEntity();
                     break;
+                case "5":
+                    sortEntities();
+                    break;
+                case "6":
+                    searchEntity();
+                    break;
                 case "0":
                     exit();
                     return;
@@ -41,6 +48,8 @@ public abstract class CRUDController {
     public abstract void readEntity();
     public abstract void updateEntity();
     public abstract void deleteEntity();
+    public abstract void sortEntities();
+    public abstract void searchEntity();
     abstract String getSubentityName();
     abstract String getEntityName();
     public void exit() {

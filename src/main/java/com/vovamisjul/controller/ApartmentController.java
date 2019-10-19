@@ -4,6 +4,10 @@ import com.vovamisjul.model.entities.Apartment;
 import com.vovamisjul.model.entities.people.Gender;
 import com.vovamisjul.model.entities.people.Resident;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class ApartmentController extends CRUDController {
 
     private Apartment apartment = new Apartment();
@@ -22,8 +26,10 @@ public class ApartmentController extends CRUDController {
             System.out.println("/**********************************************************/");
             System.out.println("Page of " + getEntityName());
             System.out.println("print: 1 to show " + getEntityName() + "; " +
-                    "2 to add new " + getSubentityName() + "; 3 to remove " + getSubentityName() + "; " +
-                    "4 to reset consumptions; 5 to add consumptions; 0 to exit");
+                    "2 to add new " + getSubentityName() + "; 3 to edit " + getSubentityName() + "; " +
+                    "4 to remove " + getSubentityName() + "; 5 to sort " + getSubentityName() + "; " +
+                    "6 to search " + getSubentityName() + "; " +
+                    "7 to reset consumptions; 8 to add consumptions; 0 to exit");
             var input = scanner.nextLine();
             switch (input) {
                 case "1":
@@ -36,9 +42,18 @@ public class ApartmentController extends CRUDController {
                     deleteEntity();
                     break;
                 case "4":
-                    apartment.resetConsumptions();
+                    deleteEntity();
                     break;
                 case "5":
+                    sortEntities();
+                    break;
+                case "6":
+                    searchEntity();
+                    break;
+                case "7":
+                    apartment.resetConsumptions();
+                    break;
+                case "8":
                     addConsumptions();
                     break;
                 case "0":
@@ -74,7 +89,27 @@ public class ApartmentController extends CRUDController {
 
     @Override
     public void deleteEntity() {
+        System.out.println("Enter number");
+        var num = scanner.nextLine();
+        try {
+            System.out.println(apartment.getResident(Integer.parseInt(num)));
+        }
+        catch (Exception e) {
+            System.out.println("Wrong number");
+        }
+    }
 
+    @Override
+    public void sortEntities() {
+        apartment.sortResidents();
+    }
+
+    @Override
+    public void searchEntity() {
+        System.out.println("Enter name");
+        var name = scanner.nextLine();
+        System.out.println("Result: \n");
+        System.out.println(Arrays.toString(apartment.searchResidents(name).toArray()));
     }
 
     @Override

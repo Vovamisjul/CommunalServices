@@ -3,14 +3,12 @@ package com.vovamisjul.model.entities;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class House implements Serializable {
+public class House implements Serializable, Comparable<House> {
     private HouseAddress address = new HouseAddress();
-    private Map<Integer, Apartment> apartments = new HashMap<>();
+    private TreeMap<Integer, Apartment> apartments = new TreeMap<>();
 
     public HouseAddress getAddress() {
         return address;
@@ -72,5 +70,10 @@ public class House implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(apartments).append(address).toHashCode();
+    }
+
+    @Override
+    public int compareTo(House o) {
+        return address.compareTo(o.address);
     }
 }

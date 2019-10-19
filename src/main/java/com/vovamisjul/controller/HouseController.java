@@ -65,6 +65,24 @@ public class HouseController extends CRUDController {
     }
 
     @Override
+    public void sortEntities() {
+
+    }
+
+    @Override
+    public void searchEntity() {
+        System.out.println("Enter number");
+        var number = scanner.nextLine();
+        try {
+            var index = Integer.parseInt(number);
+            System.out.println(house.getApartment(index));
+        }
+        catch (Exception e) {
+            System.out.println("Wrong apartment number");
+        }
+    }
+
+    @Override
     String getSubentityName() {
         return "apartment";
     }

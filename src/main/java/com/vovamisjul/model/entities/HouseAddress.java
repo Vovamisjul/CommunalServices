@@ -3,7 +3,7 @@ package com.vovamisjul.model.entities;
 import java.io.Serializable;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class HouseAddress implements Serializable {
+public class HouseAddress implements Serializable, Comparable<HouseAddress> {
     private final String city;
     private final String street;
     private final int house;
@@ -40,5 +40,15 @@ public class HouseAddress implements Serializable {
         return address.city.equals(city) &&
                 address.street.equals(street) &&
                 address.house == house;
+    }
+
+    @Override
+    public int compareTo(HouseAddress o) {
+        int res;
+        if ((res = city.compareTo(o.city)) != 0)
+            return res;
+        if ((res = street.compareTo(o.street)) != 0)
+            return res;
+        return Integer.compare(house, o.house);
     }
 }

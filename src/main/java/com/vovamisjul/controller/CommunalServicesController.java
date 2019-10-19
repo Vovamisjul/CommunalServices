@@ -81,6 +81,31 @@ public class CommunalServicesController extends CRUDController {
     }
 
     @Override
+    public void sortEntities() {
+
+    }
+
+    @Override
+    public void searchEntity() {
+        System.out.println("Enter city");
+        var city = scanner.nextLine();
+        System.out.println("Enter street");
+        var street = scanner.nextLine();
+        System.out.println("Enter house number");
+        var number = scanner.nextLine();
+        try {
+            var intNumber = Integer.parseInt(number);
+            System.out.println(communalServices.getHouse(new HouseAddress(city, street, intNumber)));
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (Exception e) {
+            System.out.println("Wrong house number");
+        }
+    }
+
+    @Override
     public void exit() {
         try {
             IOSystem.saveToFile(communalServices);

@@ -1,16 +1,21 @@
 package com.vovamisjul.model;
 
+import com.sun.source.tree.Tree;
 import com.vovamisjul.model.entities.House;
 import com.vovamisjul.model.entities.HouseAddress;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CommunalServices implements Serializable {
-    private Map<HouseAddress, House> servicedHouses = new HashMap<>();
+    private TreeMap<HouseAddress, House> servicedHouses = new TreeMap<>();
 
     public CommunalServices() {
     }

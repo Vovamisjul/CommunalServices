@@ -1,13 +1,15 @@
 package com.vovamisjul.model.entities;
 
+import com.vovamisjul.model.entities.people.Person;
 import com.vovamisjul.model.entities.people.Resident;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Apartment implements Serializable {
+public class Apartment implements Serializable, Comparable<Apartment> {
 
     private final int number;
 
@@ -38,6 +40,14 @@ public class Apartment implements Serializable {
 
     public double getColdWaterConsumption() {
         return coldWaterConsumption;
+    }
+
+    public void sortResidents() {
+        residents.sort(Person::compareTo);
+    }
+
+    public List<Resident> searchResidents(String name) {
+        return residents.stream().filter((resident -> resident.getName().equals(name))).collect(Collectors.toList());
     }
 
     public void incPowerCons(double delta) {
@@ -103,4 +113,8 @@ public class Apartment implements Serializable {
                 .append(hotWaterConsumption).append(residents).toHashCode();
     }
 
+    @Override
+    public int compareTo(Apartment o) {
+        return Integer.compare(number, o.number);
+    }
 }

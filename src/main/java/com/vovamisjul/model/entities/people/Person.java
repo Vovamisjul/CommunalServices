@@ -4,7 +4,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 
-public abstract class Person implements Serializable {
+public abstract class Person implements Serializable, Comparable<Person> {
     String name;
     Gender gender;
 
@@ -50,5 +50,10 @@ public abstract class Person implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(name).append(gender).toHashCode();
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return name.compareTo(o.name);
     }
 }
