@@ -82,7 +82,6 @@ public class CommunalServicesController extends CRUDController {
 
     @Override
     public void sortEntities() {
-
     }
 
     @Override
